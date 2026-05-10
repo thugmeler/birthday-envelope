@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ultra Birthday Envelope</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>✨ Birthday Gift ✨</title>
 
 <style>
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #0b0f1a;
-    overflow: hidden;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* 🌌 glow background */
-body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
+body{
+    height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#0b0f1a;
+
+    font-family:"Comic Sans MS", cursive, sans-serif;
+}
+
+/* 🌌 animated glow background */
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
 
     background:
         radial-gradient(circle at 20% 30%, rgba(0, 200, 255, 0.40), transparent 40%),
@@ -29,161 +39,341 @@ body::before {
         radial-gradient(circle at 50% 50%, rgba(120, 220, 255, 0.30), transparent 50%),
         radial-gradient(circle at 50% 20%, rgba(255,255,255,0.18), transparent 35%);
 
-    filter: blur(80px);
+    filter:blur(80px);
 
-    animation: glowMove 10s ease-in-out infinite alternate;
+    animation:glowMove 10s ease-in-out infinite alternate;
 }
 
-/* ✨ เอฟเฟกต์พื้นหลังขยับเบาๆ */
-@keyframes glowMove {
-    0% {
-        transform: scale(1) translate(0, 0);
+@keyframes glowMove{
+
+    0%{
+        transform:scale(1) translate(0,0);
     }
 
-    50% {
-        transform: scale(1.08) translate(-20px, 10px);
+    50%{
+        transform:scale(1.08) translate(-20px,10px);
     }
 
-    100% {
-        transform: scale(1.03) translate(20px, -10px);
+    100%{
+        transform:scale(1.03) translate(20px,-10px);
+    }
+}
+
+/* ✨ sparkle */
+.sparkle{
+    position:fixed;
+
+    width:4px;
+    height:4px;
+
+    background:white;
+    border-radius:50%;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px #8fd3ff;
+
+    animation:twinkle 2s infinite ease-in-out;
+
+    pointer-events:none;
+
+    z-index:5;
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:0.2;
+        transform:scale(0.5);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.4);
     }
 }
 
 /* 📦 wrapper */
-.wrapper {
-    position: relative;
-    width: 340px;
-    height: 220px;
-    cursor: pointer;
+.wrapper{
+    position:relative;
+    width:340px;
+    height:220px;
+
+    cursor:pointer;
+
+    animation:wrapperFloat 4s ease-in-out infinite;
+}
+
+@keyframes wrapperFloat{
+
+    0%,100%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
 }
 
 /* 📩 envelope */
-.envelope {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #89f7fe, #66a6ff);
-    border-radius: 14px;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+.envelope{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(135deg,#89f7fe,#66a6ff);
+
+    border-radius:16px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.5),
+        0 0 40px rgba(120,220,255,0.25);
+
+    overflow:hidden;
+}
+
+/* ✨ shine */
+.envelope::before{
+    content:"";
+
+    position:absolute;
+
+    top:-100%;
+    left:-50%;
+
+    width:60%;
+    height:300%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.35),
+            transparent
+        );
+
+    transform:rotate(25deg);
+
+    animation:shine 4s linear infinite;
+}
+
+@keyframes shine{
+
+    0%{
+        left:-60%;
+    }
+
+    100%{
+        left:140%;
+    }
 }
 
 /* flap */
-.flap {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 50%;
-    background: rgba(255,255,255,0.2);
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    transform-origin: top;
-    transition: 0.6s ease;
-    z-index: 2;
+.flap{
+    position:absolute;
+
+    top:0;
+
+    width:100%;
+    height:50%;
+
+    background:rgba(255,255,255,0.2);
+
+    clip-path:polygon(0 0,100% 0,50% 100%);
+
+    transform-origin:top;
+
+    transition:0.7s ease;
+
+    z-index:3;
 }
 
-/* 📄 PAPER */
-.paper {
-    position: fixed;
-    left: 50%;
-    top: 50%;
+/* 🎀 bow */
+.bow{
+    position:absolute;
 
-    width: min(520px, 92vw);
+    top:-48px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:68px;
+
+    z-index:10;
+
+    animation:bowFloat 2s ease-in-out infinite;
+}
+
+@keyframes bowFloat{
+
+    0%,100%{
+        transform:
+            translateX(-50%)
+            translateY(0px);
+    }
+
+    50%{
+        transform:
+            translateX(-50%)
+            translateY(-8px);
+    }
+}
+
+/* 📄 paper */
+.paper{
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    width:min(520px,92vw);
 
     background:
         url("https://www.transparenttextures.com/patterns/paper-fibers.png"),
-        linear-gradient(135deg, #8fd3ff, #b6e6ff);
+        linear-gradient(135deg,#8fd3ff,#b6e6ff);
 
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 24px;
+    border:1px solid rgba(255,255,255,0.35);
 
-    padding: 38px;
+    border-radius:28px;
 
-    font-size: 18px;
-    line-height: 1.9;
-    text-align: center;
-    white-space: pre-line;
+    padding:40px;
 
-    color: #0b3d5c;
+    text-align:center;
+    white-space:pre-line;
+
+    font-size:18px;
+    line-height:1.9;
+
+    color:#0b3d5c;
 
     text-shadow:
-    0 1px 2px rgba(255,255,255,0.4),
-    0 2px 8px rgba(0,0,0,0.08);
+        0 1px 2px rgba(255,255,255,0.4),
+        0 2px 8px rgba(0,0,0,0.08);
 
-    transform: translate(-50%, 80%) scale(0.9) rotateX(10deg);
-    opacity: 0;
-
-    transition: all 0.9s ease;
-
-    z-index: 999;
-
-    backdrop-filter: blur(12px);
+    backdrop-filter:blur(14px);
 
     box-shadow:
-        0 25px 80px rgba(0, 170, 255, 0.35),
+        0 25px 80px rgba(0,170,255,0.35),
         0 10px 30px rgba(255,255,255,0.15) inset;
 
-    font-family: "Segoe Script", "Comic Sans MS", cursive;
+    font-family:"Segoe Script","Comic Sans MS",cursive;
+
+    transform:
+        translate(-50%,80%)
+        scale(0.8)
+        rotateX(10deg);
+
+    opacity:0;
+
+    transition:1s ease;
+
+    z-index:999;
 }
 
 /* hint */
-.hint {
-    position: absolute;
-    bottom: -40px;
-    width: 100%;
-    text-align: center;
-    color: rgba(255,255,255,0.6);
-    font-size: 18px;
+.hint{
+    position:absolute;
+
+    bottom:-45px;
+
+    width:100%;
+
+    text-align:center;
+
+    color:rgba(255,255,255,0.65);
+
+    font-size:18px;
+
+    animation:hintBlink 2s infinite;
 }
 
-/* OPEN STATE */
-.wrapper.open .flap {
-    transform: rotateX(180deg);
+@keyframes hintBlink{
+
+    0%,100%{
+        opacity:0.5;
+    }
+
+    50%{
+        opacity:1;
+    }
 }
 
-.wrapper.open .paper {
-    transform: translate(-50%, -50%) scale(1) rotateX(0deg);
-    opacity: 1;
-    animation: floatPaper 3s ease-in-out infinite;
+/* open */
+.wrapper.open .flap{
+    transform:rotateX(180deg);
 }
 
-/* float */
-@keyframes floatPaper {
-    0% { transform: translate(-50%, -50%) translateY(0px); }
-    50% { transform: translate(-50%, -50%) translateY(-8px); }
-    100% { transform: translate(-50%, -50%) translateY(0px); }
+.wrapper.open .paper{
+    opacity:1;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1)
+        rotateX(0deg);
+
+    animation:floatPaper 3s ease-in-out infinite;
+}
+
+@keyframes floatPaper{
+
+    0%{
+        transform:
+            translate(-50%,-50%)
+            translateY(0px);
+    }
+
+    50%{
+        transform:
+            translate(-50%,-50%)
+            translateY(-10px);
+    }
+
+    100%{
+        transform:
+            translate(-50%,-50%)
+            translateY(0px);
+    }
 }
 
 /* ❄️ snow */
-.snow {
-    position: fixed;
-    top: -10px;
+.snow{
+    position:fixed;
 
-    color: white;
-    font-size: 1em;
+    top:-10px;
 
-    user-select: none;
-    pointer-events: none;
+    color:white;
 
-    animation: snowfall linear infinite;
+    user-select:none;
+    pointer-events:none;
 
-    z-index: 9999;
-    opacity: 0.8;
+    animation:snowfall linear infinite;
+
+    z-index:9999;
 }
 
-@keyframes snowfall {
+@keyframes snowfall{
 
-    0% {
-        transform: translateY(-10vh) translateX(0);
-        opacity: 0;
+    0%{
+        transform:
+            translateY(-10vh)
+            translateX(0);
+
+        opacity:0;
     }
 
-    10% {
-        opacity: 1;
+    10%{
+        opacity:1;
     }
 
-    100% {
-        transform: translateY(110vh) translateX(30px);
-        opacity: 0;
+    100%{
+        transform:
+            translateY(110vh)
+            translateX(30px);
+
+        opacity:0;
     }
 }
+
 </style>
 </head>
 
@@ -191,25 +381,37 @@ body::before {
 
 <div class="wrapper" id="wrap">
 
+    <div class="bow">🎀</div>
+
     <div class="envelope"></div>
+
     <div class="flap"></div>
 
     <div class="paper">
-🎂 Happy Birthday
+
+🎂 Happy Birthday 🎂
 
 วันนี้ไม่ใช่วันธรรมดา
 แต่มันคือวันที่พิเศษสำหรับตอง 💙
 
 ขอให้ปีนี้เต็มไปด้วยความสุขเยอะๆเลยนะ
-ขอให้ มีรอยยิ้ม และสิ่งดี ๆ ที่เข้ามาแบบไม่ทันตั้งตัวเลยแหละ
+ขอให้มีรอยยิ้ม และสิ่งดี ๆ
+เข้ามาแบบไม่ทันตั้งตัวเลยแหละ ✨
 
-ขอให้ตองยังเป็นตองในแบบที่ดีที่สุดดดด
+ขอให้ตองยังเป็นตอง
+ในแบบที่ดีที่สุดดดด 🌷
 
 และขอให้ทุกวันหลังจากนี้
-เรื่องทุกอย่างที่กังวลหรือหนักใจ “เบาและมีความสุขขึ้นเรื่อย ๆ” 🙂
+เรื่องทุกอย่างที่กังวลหรือหนักใจ
+“เบาและมีความสุขมากขึ้นเรื่อย ๆ” 🙂
+
+💖🎁❄️
+
     </div>
 
-    <div class="hint">👉 กดดูสิคนเก่งง 👈</div>
+    <div class="hint">
+        👉 กดเปิดของขวัญสิคนเก่ง 👈
+    </div>
 
 </div>
 
@@ -217,71 +419,60 @@ body::before {
 
 const wrap = document.getElementById("wrap");
 
-/* 🔊 เสียงเปิด */
+/* 🔊 sounds */
 const openSound = new Audio("./paper.mp3");
-openSound.preload = "auto";
 openSound.volume = 1;
 
-/* 🔊 เสียงปิด */
 const closeSound = new Audio("./reverb.mp3");
-closeSound.preload = "auto";
 closeSound.volume = 1;
-
-/* 🚀 อุ่นเสียง */
-window.addEventListener("load", () => {
-
-    openSound.play().catch(()=>{});
-    openSound.pause();
-    openSound.currentTime = 0;
-
-    closeSound.play().catch(()=>{});
-    closeSound.pause();
-    closeSound.currentTime = 0;
-
-});
 
 /* 💌 click */
 wrap.addEventListener("click", () => {
 
-    const isOpen = wrap.classList.contains("open");
+    const isOpen =
+        wrap.classList.contains("open");
 
-    if (!isOpen) {
+    if(!isOpen){
 
         wrap.classList.add("open");
 
-        const s = openSound.cloneNode();
-        s.currentTime = 0;
-        s.play().catch(err => {
-            console.log("เสียงเปิดไม่ทำงาน:", err);
-        });
+        openSound.currentTime = 0;
+        openSound.play();
 
-    } else {
+        createHearts();
+
+    }else{
 
         wrap.classList.remove("open");
 
-        const s = closeSound.cloneNode();
-        s.currentTime = 0;
-        s.play().catch(err => {
-            console.log("เสียงปิดไม่ทำงาน:", err);
-        });
+        closeSound.currentTime = 0;
+        closeSound.play();
     }
 
 });
 
-/* ❄️ create snow */
-function createSnow() {
+/* ❄️ snow */
+function createSnow(){
 
-    const snow = document.createElement("div");
+    const snow =
+        document.createElement("div");
 
     snow.classList.add("snow");
 
-    const snowflakes = ["❄", "❅", "❆"];
+    const snowflakes =
+        ["❄","❅","❆"];
 
     snow.innerHTML =
-        snowflakes[Math.floor(Math.random() * snowflakes.length)];
+        snowflakes[
+            Math.floor(
+                Math.random() *
+                snowflakes.length
+            )
+        ];
 
     snow.style.left =
-        Math.random() * window.innerWidth + "px";
+        Math.random() *
+        window.innerWidth + "px";
 
     snow.style.animationDuration =
         4 + Math.random() * 6 + "s";
@@ -296,11 +487,89 @@ function createSnow() {
 
     setTimeout(() => {
         snow.remove();
-    }, 10000);
+    },10000);
 }
 
-/* ❄️ spawn */
-setInterval(createSnow, 180);
+setInterval(createSnow,180);
+
+/* ✨ sparkle */
+function createSparkle(){
+
+    const sparkle =
+        document.createElement("div");
+
+    sparkle.classList.add("sparkle");
+
+    sparkle.style.left =
+        Math.random() *
+        window.innerWidth + "px";
+
+    sparkle.style.top =
+        Math.random() *
+        window.innerHeight + "px";
+
+    sparkle.style.animationDuration =
+        1 + Math.random() * 2 + "s";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => {
+        sparkle.remove();
+    },3000);
+}
+
+setInterval(createSparkle,300);
+
+/* 💖 hearts */
+function createHearts(){
+
+    for(let i=0;i<14;i++){
+
+        const heart =
+            document.createElement("div");
+
+        heart.innerHTML = "💙";
+
+        heart.style.position = "fixed";
+
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+
+        heart.style.fontSize =
+            20 + Math.random() * 25 + "px";
+
+        heart.style.pointerEvents = "none";
+
+        heart.style.zIndex = "99999";
+
+        document.body.appendChild(heart);
+
+        const x =
+            (Math.random()-0.5)*500;
+
+        const y =
+            (Math.random()-0.5)*500;
+
+        heart.animate([
+            {
+                transform:"translate(0,0)",
+                opacity:1
+            },
+            {
+                transform:
+                    `translate(${x}px,${y}px)`,
+                opacity:0
+            }
+        ],{
+            duration:1800,
+            easing:"ease-out"
+        });
+
+        setTimeout(()=>{
+            heart.remove();
+        },1800);
+    }
+}
 
 </script>
 
