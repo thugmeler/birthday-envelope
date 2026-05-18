@@ -378,6 +378,10 @@ body::before{
 </head>
 
 <body>
+<!-- 🎵 background music -->
+<audio id="bgm" loop>
+    <source src="./birthday.mp3" type="audio/mpeg">
+</audio>
 
 <div class="wrapper" id="wrap">
 
@@ -419,6 +423,19 @@ body::before{
 
 const wrap = document.getElementById("wrap");
 
+/* 🎵 background music */
+const bgm =
+    document.getElementById("bgm");
+
+bgm.volume = 0.35;
+
+/* เล่นเพลงหลัง user interaction */
+document.body.addEventListener("click", () => {
+
+    bgm.play();
+    
+
+}, { once:true });
 /* 🔊 sounds */
 const openSound = new Audio("./paper.mp3");
 openSound.volume = 1;
